@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :verified_user, only: [:new, :create]
   def new
   end
 
-  def create    
+  def create
     if @user = User.find_by(name: params[:user][:name])
       session[:user_id] = @user.id
 
@@ -15,5 +15,10 @@ class SessionsController < ApplicationController
   end
 
   def index
+  end
+
+  def destroy
+    session.destroy
+    redirect_to '/'
   end
 end

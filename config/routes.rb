@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  get 'sessions/home'
-  root 'sessions#index'
+
+  get 'rides/create'
+  get 'static/home'
+  root 'static#home'
 
   get '/signin' => 'sessions#new'
 
   post '/session' => 'sessions#create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  delete '/session' => 'sessions#destroy'
+
   resources :users
+  resources :attractions
+  resources :rides, only: :create
 end

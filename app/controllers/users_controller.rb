@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :delete]
+  skip_before_action :verified_user, only: [:new, :create]
   def new
     @user = User.new
   end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by_id(params[:id])
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :tickets, :password, :happiness, :nausea, :height, :admin)
   end
