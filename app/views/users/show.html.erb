@@ -1,0 +1,10 @@
+<div>
+  <% if @user.admin == true %>
+  <h2>Admin</h2>
+  <% end %>
+  <h3>Name: <%= @user.name %></h3>
+  <h3>Tickets: <%= @user.tickets %></h3>
+  <h3>Mood: <%= @user.mood %></h3>
+  <h3>Height: <%= @user.height %> inches</h3>
+  <%= link_to 'Go to Attractions', attractions_path %>
+</div>
