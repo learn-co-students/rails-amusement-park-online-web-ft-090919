@@ -1,0 +1,12 @@
+<% flash.each do |type, msg| %>
+    <%= msg %>
+<% end %>
+<% if @user.admin %>
+    <h1>ADMIN</h1>
+<% end %>
+<h2><%= @user.name %></h2>
+<h3>Height: <%= @user.height %></h3>
+<h3>Mood: <%= @user.mood unless @user.admin %></h3>
+<h3>Tickets: <%= @user.tickets %></h3>
+
+<a href="<%= attractions_path %>">See attractions</a>
