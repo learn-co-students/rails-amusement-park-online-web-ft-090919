@@ -2,8 +2,8 @@
 
 <% if @attraction %>
 
-  <% if current_user %>
-    <%= link_to "Go on this ride", user_path(current_user) %><br>
+  <% if current_user.try(:admin) %>
+    <h4><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></h4>
   <% end %>
 
   Name: <%= @attraction.name %><br>
@@ -15,6 +15,16 @@
   Happiness Rating: <%= @attraction.happiness_rating %><br>
 
   Minimum Height: <%= @attraction.min_height %><br>
+
+  <% if current_user %>
+
+    <%= form_for @ride do |f| %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :attraction_id %>
+      <%= f.submit "Go on this ride", class:"btn btn-blue" %>
+    <% end %>
+
+  <% end %>
 
 
 <% else %>

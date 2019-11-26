@@ -1,12 +1,18 @@
+<% if flash[:alert] %>
+
+  <h4><%= flash[:alert] %></h4>
+
+<% end %>
+
 <%= link_to "See attractions", attractions_path %>
 
 <h1>User Show Page</h1>
 
 User: <%= @user.name %><br>
 
-<%= "ADMIN" if @user.admin %>
+<%= "ADMIN" if @user.admin %><br>
 
-Height: <%= @user.height %>
+Height: <%= @user.height %><br>
 
 Tickets: <%= @user.tickets %><br>
 

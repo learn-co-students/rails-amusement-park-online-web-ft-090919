@@ -19,7 +19,23 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @attraction = Attraction.find_by(params[:id])
+    @attraction = Attraction.find_by(id: params[:id])
+    @ride = @attraction.rides.build(user_id: current_user.id) if current_user
+  end
+
+  def edit
+    @attraction = Attraction.find_by(id: params[:id])
+  end
+
+  def update
+    @attraction = Attraction.find_by(id: params[:id])
+    if @attraction.update(attraction_params)
+      flash[:alert] = "Succesfully Updated Attraction!"
+      redirect_to attraction_path(@attraction)
+    else
+      flash[:alert] = @attraction.errors.full_messages
+      render 'edit'
+    end
   end
 
   private
