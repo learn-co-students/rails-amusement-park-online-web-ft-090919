@@ -20,7 +20,7 @@ RSpec.describe User, :type => :model do
       :happiness => 3,
       :tickets => 4,
       :height => 34,
-      :admin => true
+      # :admin => true
     )
   }
 
