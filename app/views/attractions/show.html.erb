@@ -1,0 +1,24 @@
+<h1>Attraction Show Page</h1>
+
+<% if @attraction %>
+
+  <% if current_user %>
+    <%= link_to "Go on this ride", user_path(current_user) %><br>
+  <% end %>
+
+  Name: <%= @attraction.name %><br>
+
+  Tickets: <%= @attraction.tickets %><br>
+
+  Nasua Rating: <%= @attraction.tickets %><br>
+
+  Happiness Rating: <%= @attraction.happiness_rating %><br>
+
+  Minimum Height: <%= @attraction.min_height %><br>
+
+
+<% else %>
+
+  <h2>No Attraction Found!</h2>
+
+<% end %>
