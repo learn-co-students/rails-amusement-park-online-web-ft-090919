@@ -1,0 +1,12 @@
+<%= form_tag ({
+    controller: 'sessions',
+    action: 'create',
+    method: 'post',
+}) do %>
+
+    <%= select("user", "name", User.all.collect {|p| [p.name, p.id] }, {prompt: 'select user'}) %><br/>
+    <%= label_tag(name = "passowrd")%><br/>
+    <%= password_field_tag(name = "password")%><br/>
+
+    <%= submit_tag(value = "Sign In")%>
+<% end %>

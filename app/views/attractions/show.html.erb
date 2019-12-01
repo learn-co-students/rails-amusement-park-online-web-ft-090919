@@ -1,0 +1,14 @@
+<div class="center">
+    <div class="info">
+        <p><strong>Name:</strong> <%= @attraction.name %></p>
+        <p><strong>Minimun height (in inches):</strong> <%= @attraction.min_height %></p>
+        <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %> </p>
+        <p><strong>Happiness Rating</strong>: <%= @attraction.happiness_rating %></p>
+        <p><strong>Tickets:</strong> <%= @attraction.tickets %></p>
+        <% if !current_user.is_admin? %>
+            <p><%= button_to "Go on this ride", user_path(current_user), params: {'attraction[id]' => @attraction.id } %></p>
+        <% else current_user.is_admin? %>
+            <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+        <% end %>
+    </div>
+</div>
