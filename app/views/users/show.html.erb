@@ -1,0 +1,24 @@
+<h1> Hello <%= @user.name %>! </h1>
+Current Mood: <%= @user.mood %>
+Tickets: <%= @user.tickets %>
+Height: <%= @user.height %>
+
+<% if @ride %>
+<p> "Thanks for riding the <%= @ride.attraction.name %>!" </p>
+<% end %>
+
+<% if @user.admin %>
+<h3> ADMIN </h3>
+<% end %>
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+    <br>
+ <p>Log Out:</p>    
+ <input type=submit value='Log Out'>
+<% end %>
+
+<%= link_to "See attractions", attractions_path %>
+
+
+<%= link_to "Log Out", sessions_path, method: 'delete' %>
+
