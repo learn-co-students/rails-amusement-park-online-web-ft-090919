@@ -1,0 +1,14 @@
+Welcome <%= current_user.name %>!
+
+<% if flash[:message] %>
+  <p><%= flash[:message] %></p>
+<% end %>
+<% if current_user.admin %>
+  <h1>ADMIN</h1>
+  <%= link_to  "Add an attraction", new_attraction_path %>
+<% end %>
+<h3>Name: <%= current_user.name %></h3>
+<h3>Tickets: <%= current_user.tickets %></h3>
+<h3>Mood: <%= current_user.mood %></h3>
+<h3>Height: <%= current_user.height %></h3>
+<%= link_to  "See attractions", attractions_path %>
