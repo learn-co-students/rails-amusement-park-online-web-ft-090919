@@ -1,0 +1,11 @@
+<h1>Login!</h1>
+
+<% render 'users/errors' if @user.errors.any? %>
+
+<%= form_for @user, url: sessions_path, method: :post do |f| %>
+  <%= f.label :name %><br>
+  <%= f.collection_select :id, @users, :id, :name, include_blank: "Please select your username from this dropdown menu" %><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <%= f.submit "Login" %>
+<% end %>
